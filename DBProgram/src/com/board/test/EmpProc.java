@@ -16,7 +16,7 @@ public class EmpProc {
 
       while (true) {
          int menu = 0;
-         System.out.println("1, 사원등록 | 2, 사원이름조회 | 3, 부서별 조회 | 4. 부서변경 | 5, 퇴사처리 | 6, 종료");
+         System.out.println("1, 사원등록 | 2, 사원이름조회 | 3, 부서별 조회 | 4. 부서변경 | 5, 퇴사처리 | 9, 종료");
          menu = sc.nextInt();
          sc.nextLine();
          if (menu == 1) {
@@ -29,15 +29,15 @@ public class EmpProc {
             updateEmp();
          } else if (menu == 5) {
             deleteEmp();
-         } else if (menu == 6) {
+         } else if (menu == 9) {
             System.out.println("종료");
             break;
          }
       }
    }
 
-   public void updateEmp() {
-      System.out.println("수정할 사원의 이름를 입력하세요 : ");
+   public void updateEmp() {//부서 수정
+      System.out.println("부서를 수정 할 사원의 이름을 입력하세요 : ");
       String EmpName = sc.nextLine();
       System.out.println("수정할 부서의 이름을 적어주세요 : ");
       String departments = sc.nextLine();
@@ -48,7 +48,7 @@ public class EmpProc {
 
    }
 
-   public void getDepList() {
+   public void getDepList() {//부서별 조회
       System.out.println("1, 부서검색 | 2, 전체검색");
       int submenu = 0;
       submenu = sc.nextInt();
@@ -68,14 +68,14 @@ public class EmpProc {
       }
    }
 
-   public void getEmp() {
+   public void getEmp() {//사원이름조회
       System.out.println("조회할 사원 이름");
       String empName = sc.nextLine();
       Emp emp = service.getEmp(empName);
       System.out.println(emp);
    }
 
-   public void writeEmp() {
+   public void writeEmp() {//사원 등록
 
       System.out.println("사원 이름 입력");
       String empName = sc.nextLine();
@@ -96,7 +96,7 @@ public class EmpProc {
 
    }
    
-   public void deleteEmp() {
+   public void deleteEmp() {//삭제
       System.out.println("어떤 사원을 삭제 할까요?");
       int empNo = sc.nextInt();
       Emp emp = new Emp();
